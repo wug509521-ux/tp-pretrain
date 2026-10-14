@@ -1,0 +1,13 @@
+model:
+  # 使用的预训练模型名称（HuggingFace Hub 上的名称或本地路径）
+  pretrained_name: "t5-small"
+  # tokenizer 名称（通常与 pretrained_name 相同）
+  tokenizer_name: "t5-small"
+  # 额外的 dropout（如果模型配置支持）
+  dropout: 0.1
+
+  # 预留：条件化控制 / SOM 分支 / 多任务头等参数
+  # som_head:
+  #   use_aux_loss: false
+  #   aux_loss_weight: 1.0
+

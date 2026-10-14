@@ -1,0 +1,112 @@
+{
+  "n_gold_instances": 30,
+  "n_pred_instances": 21,
+  "n_missing_prediction_instances": 16,
+  "prediction_coverage": 0.466667,
+  "overall_hit@1": 0.066667,
+  "overall_recall@1": 0.017778,
+  "overall_hit@3": 0.1,
+  "overall_recall@3": 0.034444,
+  "overall_hit@5": 0.1,
+  "overall_recall@5": 0.034444,
+  "overall_hit@10": 0.1,
+  "overall_recall@10": 0.034444,
+  "by_step": [
+    {
+      "step": 1,
+      "n_instances": 10,
+      "hit@1": 0.2,
+      "recall@1": 0.053333,
+      "hit@3": 0.3,
+      "recall@3": 0.103333,
+      "hit@5": 0.3,
+      "recall@5": 0.103333,
+      "hit@10": 0.3,
+      "recall@10": 0.103333
+    },
+    {
+      "step": 2,
+      "n_instances": 10,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 3,
+      "n_instances": 4,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 4,
+      "n_instances": 2,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 5,
+      "n_instances": 1,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 6,
+      "n_instances": 1,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 7,
+      "n_instances": 1,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    },
+    {
+      "step": 8,
+      "n_instances": 1,
+      "hit@1": 0.0,
+      "recall@1": 0.0,
+      "hit@3": 0.0,
+      "recall@3": 0.0,
+      "hit@5": 0.0,
+      "recall@5": 0.0,
+      "hit@10": 0.0,
+      "recall@10": 0.0
+    }
+  ]
+}

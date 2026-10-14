@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "TP Pretrain Reproducibility Package"
+type: software
+message: "Please cite the associated manuscript and this exact release."
+authors:
+  - family-names: "Ji"
+    given-names: "Minxin"
+  - family-names: "Lou"
+    given-names: "Jingya"
+  - family-names: "Wang"
+    given-names: "Zihao"
+  - family-names: "Ma"
+    given-names: "Liping"
+  - family-names: "Ye"
+    given-names: "Lin"
+  - family-names: "Wu"
+    given-names: "Gang"
+    email: "wug@nju.edu.cn"
+  - family-names: "Zhang"
+    given-names: "Xu-Xiang"
+    email: "zhangxx@nju.edu.cn"
+version: "v0.1.0"

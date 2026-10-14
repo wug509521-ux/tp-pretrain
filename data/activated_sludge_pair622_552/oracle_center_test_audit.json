@@ -1,0 +1,11 @@
+{
+  "source": "data/activated_sludge_pair622_552/model4_oof_explicit_predcenter_top5_test.jsonl",
+  "output": "data/activated_sludge_pair622_552/oracle_center_test.jsonl",
+  "n_source": 111,
+  "n_written": 111,
+  "n_missing_gold_center": 0,
+  "missing_reaction_ids": [],
+  "center_definition": "predcenter_gold_soms_for_eval from the released Model 4 OOF file",
+  "center_index_convention": "the atom-index convention already used by the released center prompt",
+  "uses_predicted_centers": false
+}

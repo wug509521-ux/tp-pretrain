@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+*.log
+*.tmp
+runs/
+outputs/
+cache/
+.DS_Store
+models/**/model.safetensors
+data/raw_sources/**/*.xlsx
+data/normalized_canonical_20261013/reaction_pairs_sheet1_rdkit_canonical.csv

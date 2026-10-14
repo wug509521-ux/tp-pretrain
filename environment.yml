@@ -1,0 +1,14 @@
+name: tp_pretrain_repro
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.5.1
+  - pytorch-cuda=12.1
+  - rdkit
+  - pip
+  - pip:
+      - -r requirements-repro.txt
+      - -e .

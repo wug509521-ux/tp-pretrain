@@ -1,0 +1,19 @@
+{
+  "gold_paths_jsonl": "./data/multistep_gold_from_pairsheet_v1/gold_paths.jsonl",
+  "pred_targets_jsonl": "./runs/compare_pairsheet_envirule/pred_targets/pred_targets_by_step.jsonl",
+  "pred_paths_csv": "./runs/compare_pairsheet_envirule/paths_topk_for_mg.csv",
+  "n_contexts_gold": 10,
+  "n_contexts_pred": 7,
+  "depth_weight_base": 0.5,
+  "intermediate_adjust": true,
+  "mean_weighted_similarity": 0.0,
+  "mean_weighted_precision": 0.0,
+  "mean_weighted_recall": 0.0,
+  "n_contexts_nonzero_similarity": 0,
+  "n_contexts_zero_similarity": 10,
+  "n_intermediate_adjustments": 0,
+  "stepwise_n_gold_instances": 30,
+  "stepwise_prediction_coverage": 0.466667,
+  "stepwise_overall_hit@1": 0.066667,
+  "stepwise_overall_hit@10": 0.1
+}

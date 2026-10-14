@@ -1,0 +1,57 @@
+# Sludge 微调配置
+
+seed: 42  # 全局随机种子（Python/NumPy/PyTorch）
+
+# 实验名称（将作为 runs/exp_name/ 子目录名）
+exp_name: "sludge_finetune"
+
+data:
+  # 数据配置文件路径
+  config_path: configs/data_finetune.yaml
+
+  # 训练集文件（JSONL）
+  train_file: data/processed/sludge_splits/train.jsonl
+  # 验证集文件
+  valid_file: data/processed/sludge_splits/val.jsonl
+
+  # 编码端最大 token 长度（substrate）
+  max_src_length: 256
+  # 解码端最大 token 长度（product）
+  max_tgt_length: 256
+
+  # batch 大小（单卡）
+  batch_size: 8
+  # DataLoader 的 worker 数量（Windows 上建议 0）
+  num_workers: 0
+  # 是否在输入中拼接 reaction 文本（当 metadata.raw_reaction 存在时）
+  # 格式：[DOMAIN=xxx] [SOURCE=xxx] [REACTION_TEXT] xxx [SUBSTRATE] substrate_smiles
+  use_reaction_text: false
+
+model:
+  # 模型配置文件路径
+  config_path: configs/model.yaml
+  # 从预训练 checkpoint 加载（微调模式）
+  init_from_pretrained: true
+  # 预训练 checkpoint 路径（需要根据实际训练结果修改）
+  pretrained_checkpoint: runs/eawag_pretrain/checkpoints/best
+
+training:
+  # 训练轮数（epoch）
+  num_epochs: 15
+  # AdamW 学习率（微调时使用较小的学习率）
+  learning_rate: 1e-4
+  # 权重衰减系数
+  weight_decay: 0.0
+  # warmup 步数（线性 warmup）
+  warmup_steps: 500
+  # 梯度累积步数（>1 时可视为增大有效 batch）
+  gradient_accumulation_steps: 1
+  # 是否开启混合精度训练（当前 Trainer 未启用，可作为预留）
+  fp16: false
+  # 每隔多少个 global step 打印一次日志
+  log_steps: 50
+  # 每隔多少个 global step 在验证集上评估（占位，当前 Trainer 未实现 eval）
+  eval_steps: 200
+  # 每隔多少个 global step 保存一次 checkpoint（占位）
+  save_steps: 500
+

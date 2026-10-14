@@ -1,0 +1,20 @@
+{
+  "gold_targets_jsonl": "./data/multistep_gold_from_pairsheet_v1/gold_targets_by_step.jsonl",
+  "pred_jsonl": "./runs/compare_pairsheet_envirule/pred_targets/pred_targets_by_step.jsonl",
+  "match_mode": "context_root_step",
+  "n_gold_instances": 30,
+  "n_missing_prediction_instances": 16,
+  "prediction_coverage": 0.466667,
+  "max_step": 8,
+  "n_unique_context_root": 10,
+  "overall_hit@1": 0.066667,
+  "overall_recall@1": 0.017778,
+  "overall_hit@3": 0.1,
+  "overall_recall@3": 0.034444,
+  "overall_hit@5": 0.1,
+  "overall_recall@5": 0.034444,
+  "overall_hit@10": 0.1,
+  "overall_recall@10": 0.034444,
+  "overall_exact_set_match_all": 0.0,
+  "mean_first_hit_rank": 1.333333
+}

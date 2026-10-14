@@ -1,0 +1,12 @@
+{
+  "input_csv": "./data/iterative_dataset_from_pairs_by_source_depth10_postproc/strict_iterative_long.csv",
+  "n_input_rows": 4585,
+  "n_unique_path_ids": 2134,
+  "n_unique_context_root": 442,
+  "n_gold_path_records": 442,
+  "n_gold_target_records": 855,
+  "n_gold_edges_rows": 4585,
+  "max_step": 5,
+  "max_depth_total": 5,
+  "n_unique_sources": 289
+}

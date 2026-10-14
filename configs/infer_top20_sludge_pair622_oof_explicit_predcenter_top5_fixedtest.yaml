@@ -1,0 +1,18 @@
+data:
+  config_path: configs/data.yaml
+  input_file: data/activated_sludge_pair622_552/model4_oof_explicit_predcenter_top5_test.jsonl
+  output_file: outputs/predictions.jsonl
+  max_src_length: 256
+  max_tgt_length: 256
+  batch_size: 4
+model:
+  config_path: configs/model.yaml
+  checkpoint_path: outputs/checkpoints/latest
+inference:
+  num_beams: 20
+  num_return_sequences: 20
+  max_new_tokens: 256
+  do_sample: false
+evaluation:
+  predictions_file: outputs/predictions.jsonl
+  output_dir: outputs/eval
