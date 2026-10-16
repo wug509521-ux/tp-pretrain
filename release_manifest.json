@@ -1,814 +1,819 @@
-﻿{
-    "schema_version":  2,
-    "status":  "CORE_REPRODUCTION_PACKAGE",
-    "generated_at":  "2026-10-16T15:57:38.8995572+08:00",
-    "scope":  "Checkpoint-based reproduction with retained raw source workbooks",
-    "model_branches":  [
-                           "model_1_no_pretraining",
-                           "model_2_single_step_pretraining",
-                           "model_3_two_step_pretraining",
-                           "model_4_reaction_site_assisted",
-                           "reaction_site_oracle",
-                           "fusion_head",
-                           "fusion_tail",
-                           "center_predictor"
-                       ],
-    "required_inputs":  [
-                            "data/activated_sludge_pair622_552",
-                            "data/external_multistep_571_seeds",
-                            "data/external_multistep_gold_strict_442roots_855targets",
-                            "data/external_single_step_494"
-                        ],
-    "core_entrypoints":  [
-                             "scripts/reproduce_single_step.py",
-                             "scripts/reproduce_multistep.py",
-                             "scripts/evaluate_single_step.py",
-                             "scripts/evaluate_multistep.py",
-                             "scripts/compare_reproduced_metrics.py"
-                         ],
-    "optional_provenance_backup":  "tp_pretrain_optional_provenance_backup_20261016",
-    "files":  [
-                  {
-                      "path":  ".gitignore",
-                      "size_bytes":  312,
-                      "sha256":  "3f46a66ec99b5f7d5128fb89a016a2bfdda1f83820450df2801b654e61427add"
-                  },
-                  {
-                      "path":  "baselines/README.md",
-                      "size_bytes":  107,
-                      "sha256":  "e77f2676efeec09736a148db138db9fcecf29580b36d3fd25ab62f601e5ece55"
-                  },
-                  {
-                      "path":  "CITATION.cff",
-                      "size_bytes":  584,
-                      "sha256":  "d65110e711ef5af2e151d6b54d946ca17fc72d75f9e73786869d9fb8428b4690"
-                  },
-                  {
-                      "path":  "configs/infer_top20.yaml",
-                      "size_bytes":  94,
-                      "sha256":  "dcb55e1d21d5b4227afdf95ba7560bc9bbe9644204f02331e1e42b5d1bc02b7c"
-                  },
-                  {
-                      "path":  "configs/README.md",
-                      "size_bytes":  504,
-                      "sha256":  "c539e1700e7ecd225739d0748071938b0715b842281b678509f6df084fcc4e12"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/model4_oof_explicit_predcenter_top5_test.jsonl",
-                      "size_bytes":  119779,
-                      "sha256":  "61ad384d64955156cc00f1030bb0e64a3a736b257704ffab8e64d3db8856ad76"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/oracle_center_test.jsonl",
-                      "size_bytes":  87735,
-                      "sha256":  "e014d9da8e73c5fdfb7599f64812f1706e2d58dcf5a6c22ce414dbaa3d6634cf"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/oracle_center_test_audit.json",
-                      "size_bytes":  510,
-                      "sha256":  "bd35e5184247e3022d7349cd5377d4f8f9575fa2edb2b1fb91984b58ce0eef7b"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/test.jsonl",
-                      "size_bytes":  61689,
-                      "sha256":  "1aee7fe4488eb438a7a7e11eb0d7217d7c8a475d685257cccbda399ddf6ee634"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/train.jsonl",
-                      "size_bytes":  183665,
-                      "sha256":  "5de7bec6937b3006f4ccae2dbaeede0aa78000c5a8d9defcc3e6b15d6073c116"
-                  },
-                  {
-                      "path":  "data/activated_sludge_pair622_552/validation.jsonl",
-                      "size_bytes":  60488,
-                      "sha256":  "df9d5d83d881e36460405e4bf15a6d218dcf04b20c3b7d84edca01160c154fe5"
-                  },
-                  {
-                      "path":  "data/external_multistep_571_seeds/drug_list_2_multistep_seeds.csv",
-                      "size_bytes":  58349,
-                      "sha256":  "94b58b4453f24cc6cf2f2a87ede51acbb47c7a0d38d0d8eaa9f159770a9d4420"
-                  },
-                  {
-                      "path":  "data/external_multistep_571_seeds/README.md",
-                      "size_bytes":  391,
-                      "sha256":  "ac4e008b5033dd6682b2e619b1123c4117dc45edff8b42a273e29fd417362fb5"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/gold_edges.csv",
-                      "size_bytes":  2289139,
-                      "sha256":  "5a48879b63540324262a97d03d85c649522e1794f677c2b2b040c4fb71c057a7"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/gold_paths.jsonl",
-                      "size_bytes":  2022042,
-                      "sha256":  "e508f6f76f3c1f29306fc75df5ed98ffb48d8d9e548cca82031f9a8ef0d5b8b2"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/gold_targets_by_step.csv",
-                      "size_bytes":  614533,
-                      "sha256":  "55234b0e8397b47a3c07e26423d74a64d917b3de7889f1e949f0624137561abb"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/gold_targets_by_step.jsonl",
-                      "size_bytes":  797936,
-                      "sha256":  "f1c473243d1894de646718635ba820048f68e02ee999ecf2d00fc44856404ca3"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/seeds.csv",
-                      "size_bytes":  212965,
-                      "sha256":  "9474fe5ad6f6be14386cbe94f8a7f3eb36aa83b1dcc8de8ea59ea3c16f283202"
-                  },
-                  {
-                      "path":  "data/external_multistep_gold_strict_442roots_855targets/summary.json",
-                      "size_bytes":  354,
-                      "sha256":  "722fe5e3853eb1caffe23f161072c37ae94c4bd2dab93d8b54e78dc0eb89de21"
-                  },
-                  {
-                      "path":  "data/external_single_step_494/external_reactions.csv",
-                      "size_bytes":  105068,
-                      "sha256":  "7c4b07d3272a5ce80aabf2d31ec492b66896a06d49f6ac7190b605d72a99fc74"
-                  },
-                  {
-                      "path":  "data/external_single_step_494/external_reactions.jsonl",
-                      "size_bytes":  249754,
-                      "sha256":  "11a58ca817431c3ef670a14bae87b9f43b8317dd3147ae791e89a2ae121179d3"
-                  },
-                  {
-                      "path":  "data/raw/activated_sludge_reactions_raw.xlsx",
-                      "size_bytes":  209478,
-                      "sha256":  "989f21bad9c35b1427a5e0f1b502f1371328d79c5a66db70d3427ab537bc51be"
-                  },
-                  {
-                      "path":  "data/raw/environmental_domain_raw.xlsx",
-                      "size_bytes":  308088,
-                      "sha256":  "6a0181a45dbc3cab79f6de7e4a32d6e33cd19210ddd09e681aacfa23f5223bbe"
-                  },
-                  {
-                      "path":  "data/raw/reaction_pairs_raw.xlsx",
-                      "size_bytes":  115962728,
-                      "sha256":  "f2d26b6f673a49487d1b317f1315d5c376393e2ff4d6e34006394accc94bee1a"
-                  },
-                  {
-                      "path":  "data/raw/README.md",
-                      "size_bytes":  932,
-                      "sha256":  "ec60c268dcaa7db715f5ee4af5d11b2c255ee0c38c6155724a11590c2df8bcd0"
-                  },
-                  {
-                      "path":  "data/raw/wastewater_biotransformation_1218_raw.xlsx",
-                      "size_bytes":  1491102,
-                      "sha256":  "0ea482421f3eebf2b22bad9f0681a20ab3571ef26255c3fbfe4b6d15b9b86cd8"
-                  },
-                  {
-                      "path":  "data/README.md",
-                      "size_bytes":  1056,
-                      "sha256":  "458f866fccef0bf47dcb16ce77062677c5e828e1e497077d3e10b31f2f209f3c"
-                  },
-                  {
-                      "path":  "docs/DATA_AVAILABILITY.md",
-                      "size_bytes":  431,
-                      "sha256":  "6475c5660b46fe9ad2a80f886a6d9344f6557b17894ffd12c96ceb389f469023"
-                  },
-                  {
-                      "path":  "docs/EXTERNAL_BASELINES.md",
-                      "size_bytes":  369,
-                      "sha256":  "34ed6f22c2f8f1760cd7c260338ee5475604546eafc7e2fdda977a862d331cb8"
-                  },
-                  {
-                      "path":  "docs/MODEL_MAPPING.md",
-                      "size_bytes":  1256,
-                      "sha256":  "f28833623dd0f16d85f783b183a8b36b1105c5733c323f7db5625454ba57b535"
-                  },
-                  {
-                      "path":  "docs/REACTION_SITE_PROVENANCE.md",
-                      "size_bytes":  2852,
-                      "sha256":  "274405457af0d26294123bb3d6e6dc090e859e78d4ae1e889b9aa175102d8242"
-                  },
-                  {
-                      "path":  "environment.yml",
-                      "size_bytes":  217,
-                      "sha256":  "9b7f459d5d8545c2c8f29e8242b12ed18a1aed6e1fc2487aa93679d0338268cb"
-                  },
-                  {
-                      "path":  "examples/README.md",
-                      "size_bytes":  801,
-                      "sha256":  "307dc385d968a97266f51ec3efb3c15bd5244d18207606f173840ad3b1662750"
-                  },
-                  {
-                      "path":  "examples/run_multistep_example.sh",
-                      "size_bytes":  779,
-                      "sha256":  "621ffc18d3dd98c13ffb3329b16c917b104c6c4a9de2f36cd8bc4f805e5b1762"
-                  },
-                  {
-                      "path":  "examples/run_single_step_example.sh",
-                      "size_bytes":  572,
-                      "sha256":  "7f2e1d0e20365a708726659d551fb81937568ea8e27dfd19d49354d262b62adb"
-                  },
-                  {
-                      "path":  "LICENSE",
-                      "size_bytes":  10768,
-                      "sha256":  "8152889eddc2b0349f51ce256997c687448454d555780d90192112a6c3397a8c"
-                  },
-                  {
-                      "path":  "models/center_predictor",
-                      "size_bytes":  14198533,
-                      "sha256":  "448c2882087d615bd0a4e211d4cc1918178ec0dff28670fae65781f312490696"
-                  },
-                  {
-                      "path":  "models/fusion_head/config.json",
-                      "size_bytes":  1551,
-                      "sha256":  "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
-                  },
-                  {
-                      "path":  "models/fusion_head/generation_config.json",
-                      "size_bytes":  141,
-                      "sha256":  "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
-                  },
-                  {
-                      "path":  "models/fusion_head/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "4dc5db431fcec7bcdc16a2a06b2df5d7cc900e9ad06df0ed8a04627a5734337f"
-                  },
-                  {
-                      "path":  "models/fusion_head/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/fusion_head/tokenizer_config.json",
-                      "size_bytes":  3883,
-                      "sha256":  "c6f4bde40e95735d4c6e33d12cacc7ea049cf9b7401b0d1eb75a41cd527a2e38"
-                  },
-                  {
-                      "path":  "models/fusion_tail/config.json",
-                      "size_bytes":  1551,
-                      "sha256":  "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
-                  },
-                  {
-                      "path":  "models/fusion_tail/generation_config.json",
-                      "size_bytes":  141,
-                      "sha256":  "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
-                  },
-                  {
-                      "path":  "models/fusion_tail/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "e41030fa81f22e13251527a01879f71b817cc66fa1ed2718f6fb0df4ea1447da"
-                  },
-                  {
-                      "path":  "models/fusion_tail/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/fusion_tail/tokenizer_config.json",
-                      "size_bytes":  301,
-                      "sha256":  "0f436250f1f99d6babc39960363be2e7437067f00d644c78e83bf0dee373b59c"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/config.json",
-                      "size_bytes":  1502,
-                      "sha256":  "9a8c2e26bdc8ac00c0c074b61a8124de2e36c968bb31370efa2e5c4c014a340b"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/generation_config.json",
-                      "size_bytes":  142,
-                      "sha256":  "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "087fc529f5322152665d76daa4c7dead52db028d3455889af02b9e51a7242001"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/special_tokens_map.json",
-                      "size_bytes":  2543,
-                      "sha256":  "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/spiece.model",
-                      "size_bytes":  791656,
-                      "sha256":  "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/model_1_no_pretraining/tokenizer_config.json",
-                      "size_bytes":  20804,
-                      "sha256":  "f941a71e49530c706dbd84e4732aa0678634779b24e286da98d32906c0fee00a"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/config.json",
-                      "size_bytes":  1530,
-                      "sha256":  "fbb09fd8d47e4a2981b215c8cf95889a85cd05d4e57603579d4fcced93aaacb8"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/generation_config.json",
-                      "size_bytes":  142,
-                      "sha256":  "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "bf8794834a3c32c397963507f71caae442f699e8936b92e218eebce1e8374645"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/special_tokens_map.json",
-                      "size_bytes":  2543,
-                      "sha256":  "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/spiece.model",
-                      "size_bytes":  791656,
-                      "sha256":  "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/tokenizer.json",
-                      "size_bytes":  2422422,
-                      "sha256":  "da5b4d02d2ce28081618e607a0cb9fcbc4a69893ab8ac92212430386c8f8e898"
-                  },
-                  {
-                      "path":  "models/model_2_single_step_pretraining/tokenizer_config.json",
-                      "size_bytes":  20995,
-                      "sha256":  "2fbd91e99fbe334f972496e372d931da2d1444bc9be8b5b1243ffaa5774e5e55"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/config.json",
-                      "size_bytes":  1535,
-                      "sha256":  "6b1c2e630b77dcdbb242156de0f3e905d358090fe32d9ee1ceeaf1323ae9e5e7"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/generation_config.json",
-                      "size_bytes":  142,
-                      "sha256":  "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "c290ae1b6c4f80af64a87a253d165086ecb6b7dda900d87b50c1b4f7245a3fc9"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/special_tokens_map.json",
-                      "size_bytes":  2543,
-                      "sha256":  "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/spiece.model",
-                      "size_bytes":  791656,
-                      "sha256":  "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/model_3_two_step_pretraining/tokenizer_config.json",
-                      "size_bytes":  20804,
-                      "sha256":  "f941a71e49530c706dbd84e4732aa0678634779b24e286da98d32906c0fee00a"
-                  },
-                  {
-                      "path":  "models/model_4_reaction_site_assisted/config.json",
-                      "size_bytes":  1551,
-                      "sha256":  "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
-                  },
-                  {
-                      "path":  "models/model_4_reaction_site_assisted/generation_config.json",
-                      "size_bytes":  141,
-                      "sha256":  "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
-                  },
-                  {
-                      "path":  "models/model_4_reaction_site_assisted/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "4dc5db431fcec7bcdc16a2a06b2df5d7cc900e9ad06df0ed8a04627a5734337f"
-                  },
-                  {
-                      "path":  "models/model_4_reaction_site_assisted/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/model_4_reaction_site_assisted/tokenizer_config.json",
-                      "size_bytes":  3883,
-                      "sha256":  "c6f4bde40e95735d4c6e33d12cacc7ea049cf9b7401b0d1eb75a41cd527a2e38"
-                  },
-                  {
-                      "path":  "models/reaction_site_oracle/config.json",
-                      "size_bytes":  1551,
-                      "sha256":  "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
-                  },
-                  {
-                      "path":  "models/reaction_site_oracle/generation_config.json",
-                      "size_bytes":  141,
-                      "sha256":  "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
-                  },
-                  {
-                      "path":  "models/reaction_site_oracle/model.safetensors",
-                      "size_bytes":  242041896,
-                      "sha256":  "b5bb3355b85ff72ff26c244692743b1bb41c19c78b0c7f8b851abc80ef8a3f81"
-                  },
-                  {
-                      "path":  "models/reaction_site_oracle/tokenizer.json",
-                      "size_bytes":  2422169,
-                      "sha256":  "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
-                  },
-                  {
-                      "path":  "models/reaction_site_oracle/tokenizer_config.json",
-                      "size_bytes":  2394,
-                      "sha256":  "720af819158ef06b74df81271e37e62461e1bc25a70e73dd523742bc82533377"
-                  },
-                  {
-                      "path":  "pyproject.toml",
-                      "size_bytes":  678,
-                      "sha256":  "e2de154d3864fdc2fa3ca5ce6008a2e532eabdfce62aadba93ec4bec7aa40cc9"
-                  },
-                  {
-                      "path":  "README.md",
-                      "size_bytes":  5034,
-                      "sha256":  "e6ac35fe2b1ff227850bb11b5163aad97715df48bbdc7bb5c524ec7937e4ab35"
-                  },
-                  {
-                      "path":  "requirements-repro.txt",
-                      "size_bytes":  225,
-                      "sha256":  "9c59abed76b2044ebccac77e1af1138aaa5b5cf231f470d1c0e6cdf5d3bfaecc"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/edges.csv",
-                      "size_bytes":  14056,
-                      "sha256":  "c9ef4e7d80a3aace26dade1cbe3be40a83655781aad379010d0a06bd51e4f18b"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/instance_scores.csv",
-                      "size_bytes":  49557,
-                      "sha256":  "8b350b1079329f1e461f564724e496080e783fbf2695e7c6e4718bb0b877e224"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/metrics_by_step.csv",
-                      "size_bytes":  648,
-                      "sha256":  "92de116934b1b892e16d0249b42edfed1bf15c0d1c0a4426f4e33249ed61dafd"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/metrics_summary.json",
-                      "size_bytes":  680,
-                      "sha256":  "358ac3fe5fd423a7e4d69daadc224a7b7caa32f3a52dbb88db8197b3b66c276b"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/missing_prediction_keys.csv",
-                      "size_bytes":  4281,
-                      "sha256":  "c9018927cb9a4f6c82075cdcd212fb8550fd94b521c8a200c74e1a8a3bcedd1f"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/normalized_predictions.jsonl",
-                      "size_bytes":  10675,
-                      "sha256":  "0e25315785fdb04834a4149ae9a17410f880782b7cab582984d02987a1485e14"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/intermediate_matches.csv",
-                      "size_bytes":  1,
-                      "sha256":  "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/metrics_by_context.csv",
-                      "size_bytes":  5378,
-                      "sha256":  "ab919743435e62b69774b93e9be21722c28e9d34e9231b6e5ea4c56048b3f5b0"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/metrics_summary.json",
-                      "size_bytes":  733,
-                      "sha256":  "aa499480c8035f82c824ca563e4aec63513b57f66ed98e0ce858d571725139cb"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/normalized_pred_paths.csv",
-                      "size_bytes":  13288,
-                      "sha256":  "45dd9aa0e4ff18b584a7bb0eb12e8f9a4783b757aa16b93153eb955ca65d5032"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/stepwise_metrics_by_step.csv",
-                      "size_bytes":  389,
-                      "sha256":  "d07438dc1cc08415f365d276d0f1274198c5e4d5fce2a3b6cb025a7b6a4992e1"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/stepwise_metrics_from_targets.json",
-                      "size_bytes":  2217,
-                      "sha256":  "483f47df5f8f6ab89dfd7427fafffb10082712dd91ec66b7cc56b1e0c8f30a40"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/weighted_pr_curve.csv",
-                      "size_bytes":  237,
-                      "sha256":  "8529155593f7e165dc634d67d416459e140d1d2ca4903175c4cbded7ca98f541"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/nodes.csv",
-                      "size_bytes":  25259,
-                      "sha256":  "50b9aeadf8c9ed9a3ad828ad622864414e70330a49bfe588f555233f5befd283"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/paths_topk.csv",
-                      "size_bytes":  23138,
-                      "sha256":  "1ced936f716bbbc3224dfe99769432cfb827a36875cccf25b05c4f1e8fba00f0"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/paths_topk_for_mg.csv",
-                      "size_bytes":  14255,
-                      "sha256":  "97d9d5873fa920aae1b37827be8d6735a49f7296e4765a81f370f6113bf2c0b5"
-                  },
-                  {
-                      "path":  "results/baselines/envirule_pairsheet_10seed/summary.json",
-                      "size_bytes":  955,
-                      "sha256":  "3a5f2a829215047ef19376c0a5196e0111aab386a5a3b2df6f8d91d4278abe5a"
-                  },
-                  {
-                      "path":  "results/figure_5_attention/attention_heatmap_clean_QA_summary.csv",
-                      "size_bytes":  729,
-                      "sha256":  "05d278335b935d36ff3183b3eb6ecfd6f6f902ca0f49a118783d26790b1d7636"
-                  },
-                  {
-                      "path":  "results/figure_5_attention/attention_heatmap_clean_source_data.csv",
-                      "size_bytes":  3462908,
-                      "sha256":  "074881cec2e84fd1776dd922edd2282600b55ad5346404323f419f294ed2f312"
-                  },
-                  {
-                      "path":  "results/figure_5_attention/attention_mean_clean.csv",
-                      "size_bytes":  2316437,
-                      "sha256":  "820e74ce1113b32f87d555d79bfcb2e78f2c7adcf7192fe0b332ec4faa58d162"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/all_complete_paths.csv",
-                      "size_bytes":  10180650,
-                      "sha256":  "b846af86818c0fd9a3fea82efb70ff2bcb6b49c31a172bc9ef4649093157c9d3"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/all_depth3_paths.csv",
-                      "size_bytes":  10168898,
-                      "sha256":  "63b6a105139c0f2b3f8e956d01bbebc5bf6e77bb84b9b99c9517e45297c42812"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/best_depth3_path_per_drug.csv",
-                      "size_bytes":  509226,
-                      "sha256":  "4ff69adedc5f54e9912b8a32ff8b9a89f0c6c446ed201b9c4b1567618545bf54"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/config.json",
-                      "size_bytes":  1013,
-                      "sha256":  "e3c608ae99abb1881af0e264e9ab617fdf1d056471afb0eb5e63bbca55593178"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/drug_multistep_summary.csv",
-                      "size_bytes":  30375,
-                      "sha256":  "40e6839ee7445869b7949d24a984643fb7ec187175b718beb2e76b4865132459"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/edges.csv",
-                      "size_bytes":  5552256,
-                      "sha256":  "7e684bea22f38abd344428ae3564f13e4772f1b31370d954029505ec93e52d29"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/nodes.csv",
-                      "size_bytes":  6860564,
-                      "sha256":  "589b1e1d8f485b5df0e4b40cf2be815deac5e8868939680eb87d8e006dc49e9e"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/paths_topk.csv",
-                      "size_bytes":  147228,
-                      "sha256":  "8bfee2174b052aaa72933b937be397e87a83472f23ad570889f5ae191f88839d"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/seeds.csv",
-                      "size_bytes":  58349,
-                      "sha256":  "94b58b4453f24cc6cf2f2a87ede51acbb47c7a0d38d0d8eaa9f159770a9d4420"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/summary.json",
-                      "size_bytes":  956,
-                      "sha256":  "6a97769042ab5a4d58f731629aa073f946611e26987ab1b96ef320093d821256"
-                  },
-                  {
-                      "path":  "results/fusion_multistep_571_depth3_top10_expandtop3/top10_depth3_paths_per_drug.csv",
-                      "size_bytes":  5092288,
-                      "sha256":  "7cff9c3a1f2b02dd6d07fe774a1c2af6c272586d46ab8ce5de7e1865d529c11a"
-                  },
-                  {
-                      "path":  "results/reference_metrics/README.md",
-                      "size_bytes":  379,
-                      "sha256":  "3157103fe5353eef2630a09369cb875ef57ee5539ebd285ecdd57ba6cd5a03ca"
-                  },
-                  {
-                      "path":  "scripts/build_oracle_center_test.py",
-                      "size_bytes":  3536,
-                      "sha256":  "2e237b915a61f7d7dcf8a8233232c804d73b83e470eb61478e03a17d89474dd9"
-                  },
-                  {
-                      "path":  "scripts/compare_reproduced_metrics.py",
-                      "size_bytes":  3468,
-                      "sha256":  "59c865d2a582abe64886d15582550d31618f9961c5e2734741fe17c1388d43ad"
-                  },
-                  {
-                      "path":  "scripts/evaluate_multistep.py",
-                      "size_bytes":  7492,
-                      "sha256":  "6717c9b075386952e936797264c03c31e341fac72912ad201b8865812b550d26"
-                  },
-                  {
-                      "path":  "scripts/evaluate_single_step.py",
-                      "size_bytes":  4987,
-                      "sha256":  "3333382435e7911593e8b83ad0e1ce413e99039872ee987bb9938439cfd2b8e2"
-                  },
-                  {
-                      "path":  "scripts/fuse_head_tail_predictions.py",
-                      "size_bytes":  4098,
-                      "sha256":  "f9c675079e30e24730e7f4eb52521919bf29e783ef890dfaf9d8b5eb6b49aeb5"
-                  },
-                  {
-                      "path":  "scripts/predict_baseline_multi_smiles.py",
-                      "size_bytes":  19151,
-                      "sha256":  "fe6a763714d83b8d63b9c7e4646b4b239c3885cd8f50d691c430cbb9a46d7fe9"
-                  },
-                  {
-                      "path":  "scripts/predict_fusion_oofhead_newmergedc3tail.py",
-                      "size_bytes":  10218,
-                      "sha256":  "6fa64d9a5f3ef78d8febee4075b4aa7238ff0ca0a415267e6f7cc4b466d11f35"
-                  },
-                  {
-                      "path":  "scripts/reproduce_multistep.py",
-                      "size_bytes":  21150,
-                      "sha256":  "953704599a034126ce27b8c50955c6f914189a251858bae1f977f38310a6633f"
-                  },
-                  {
-                      "path":  "scripts/reproduce_single_step.py",
-                      "size_bytes":  6315,
-                      "sha256":  "507b09d70d34bc4d8d618d3d12bca93e58174b3affa9b8ab43021e75f9760370"
-                  },
-                  {
-                      "path":  "scripts/train_predict_som_center_oof_explicit.py",
-                      "size_bytes":  14209,
-                      "sha256":  "fcb916a4a780027b1c69697d660d7c039990174c28e757fd931494eee7c51438"
-                  },
-                  {
-                      "path":  "src/github_release_tools_20261013.zip",
-                      "size_bytes":  12016,
-                      "sha256":  "a590f71903e597e2af5a902cdb70b3d88b1f840b7b40ece6e00ce585ba6c0fee"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/__init__.py",
-                      "size_bytes":  185,
-                      "sha256":  "a659c7db024e91f2fdcfb742099b4132105fffdb3f5a58bc4fc61d5ea11df36c"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/data/__init__.py",
-                      "size_bytes":  175,
-                      "sha256":  "43d0cdaaf390ad4ee96a4e58e8d29311daa644d8b3ff26d641e348880fac4931"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/data/collator.py",
-                      "size_bytes":  4109,
-                      "sha256":  "97774d2ce40a3ae7afd8c5ff35e8b11de2edcfc589cd076e6d69ea87d0fb1f3b"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/data/dataset.py",
-                      "size_bytes":  1482,
-                      "sha256":  "06f07dc15589b0736d9a3228a0e0b229bf37954580f091afc103d8a4c8600d6b"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/data/preprocess.py",
-                      "size_bytes":  13067,
-                      "sha256":  "d951f0b3b7d39eafa0f79bce94aaaeabdcdd0abe456d33ae96131b50a3da26bc"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/data/schema.py",
-                      "size_bytes":  3730,
-                      "sha256":  "2db1f97d93171ab19f2fd214d77c675aa837c28d1732d2360ab7c59a0e46b16f"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/evaluation/__init__.py",
-                      "size_bytes":  173,
-                      "sha256":  "5db0fde1624156ea20bd165a67efc3311b00340e1de1a18b4599db6fbd45cc31"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/evaluation/evaluator.py",
-                      "size_bytes":  8279,
-                      "sha256":  "f7e21c633b7d4cafab196bf468123315d3ef48aa7c241e9dcb8a7d58a1f24b28"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/inference/__init__.py",
-                      "size_bytes":  379,
-                      "sha256":  "aa9c5866dfbdf8ccafe5ffc8abdf47240a2a65cd045efd37e4da96823b1fff11"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/inference/path.py",
-                      "size_bytes":  6816,
-                      "sha256":  "63dbf9a3045adb20e8448f490f3583d060902eec6f7692aa2501a0aad6839854"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/inference/predictor.py",
-                      "size_bytes":  5825,
-                      "sha256":  "decd7e96a12a22b40da7953d7a74284ca60baa51da6c9d9e3aabcc498c1cb10c"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/inference/rerank.py",
-                      "size_bytes":  4267,
-                      "sha256":  "0c98b3d628f195f58ac58050ba9a60402d9107515b50f2965f5a76bbc4562639"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/models/__init__.py",
-                      "size_bytes":  472,
-                      "sha256":  "2e8129049337335a533c90c7a8f802dcc1df52dcc3fc60969d3f50936c3d2867"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/models/som_head.py",
-                      "size_bytes":  1620,
-                      "sha256":  "81b17082f0c0bee5f2ba99f6c77f8043fe38d214b537592ad05619b59046c970"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/models/stop_head.py",
-                      "size_bytes":  1421,
-                      "sha256":  "b65d50ff368c8d970c2889c2715e30fa04b52c74eda481c3a10cb474eeaaf5c2"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/models/tokenizer.py",
-                      "size_bytes":  1832,
-                      "sha256":  "5ada7be196ecc4bc0e983784067699547b3822ee11df154d646f149f39a85d0b"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/retrieval/__init__.py",
-                      "size_bytes":  515,
-                      "sha256":  "bf8ecc4c6be8f0cb8080554ec2af50e654bf9129f61e0304e183e3c260eb2b1a"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/retrieval/index.py",
-                      "size_bytes":  4637,
-                      "sha256":  "5078901e18a9f4e78b4f357a48243d384e4757cf07f6b737addfedf7bf1fc45f"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/retrieval/retriever.py",
-                      "size_bytes":  2038,
-                      "sha256":  "51c419f4b216f91d9bea9a747718840b5317a18998cffa27d8151f7ca6280825"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/retrieval/schema.py",
-                      "size_bytes":  1274,
-                      "sha256":  "ceb6bfaeb05f45295da224eb3437032d47641e1a9e5ce7d86a9cf366ad090d0a"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/retrieval/scorer.py",
-                      "size_bytes":  1018,
-                      "sha256":  "e4bab447b3ec7a0767d369feba217b4df0743cd39396e8a25fb1a93a4c815a92"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/training/__init__.py",
-                      "size_bytes":  278,
-                      "sha256":  "b3c7e246cb79517e1aaafaa51a5f72ce207cb32b5ae15b3d53aadf6352b9f52c"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/training/losses.py",
-                      "size_bytes":  923,
-                      "sha256":  "2da2cd250fb2b520317a4fe9d681b6ed63b3d16706b5a798d19dde9efb25b8dc"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/training/trainer.py",
-                      "size_bytes":  6989,
-                      "sha256":  "acbe5fdd6f2e8d9d148db13e25797d8eb9c44a9790b5a889ed4ff48628f9d12d"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/utils/__init__.py",
-                      "size_bytes":  303,
-                      "sha256":  "5fe4598e75a99a265165e982f7adc64eff27d74c33d83200c30bb443045f8be8"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/utils/chemistry.py",
-                      "size_bytes":  3059,
-                      "sha256":  "c528578de9c44fa37a38b8bfe8c3f1b90e849abf9c9955a4726d3c0fd5f7223f"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/utils/io.py",
-                      "size_bytes":  1878,
-                      "sha256":  "b628c42da771625705e5400f9df47a1e37653f1c1ca7f16634ae15abf2f848dc"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/utils/logging_utils.py",
-                      "size_bytes":  1218,
-                      "sha256":  "8d9ea31bf59f586c2793d6b789b716995bfd746e65a9964db2c2de6c6c6475b9"
-                  },
-                  {
-                      "path":  "src/tp_pretrain/utils/seed.py",
-                      "size_bytes":  786,
-                      "sha256":  "5330a45023e2f7c33c994a14ef544c7e80f709a0aa7cb57120ce8afd0d0cf54e"
-                  },
-                  {
-                      "path":  "tests/README.md",
-                      "size_bytes":  130,
-                      "sha256":  "756a7eee3f96adf81c56171cba63e519ef18768ce34cdec0bdd77e8b83ca192c"
-                  }
-              ],
-    "raw_source_data":  [
-                            "data/raw/reaction_pairs_raw.xlsx",
-                            "data/raw/environmental_domain_raw.xlsx",
-                            "data/raw/activated_sludge_reactions_raw.xlsx",
-                            "data/raw/wastewater_biotransformation_1218_raw.xlsx"
-                        ],
-    "excluded_provenance":  [
-                                "large canonical audit tables",
-                                "source manifests",
-                                "debug-only pairsheet gold inputs",
-                                "derived 1218_safe.xlsx copy"
-                            ]
+{
+  "schema_version": 2,
+  "status": "CORE_REPRODUCTION_PACKAGE",
+  "generated_at": "2026-10-16T17:51:49.110469+08:00",
+  "scope": "Checkpoint-based reproduction with retained raw source workbooks",
+  "model_branches": [
+    "model_1_no_pretraining",
+    "model_2_single_step_pretraining",
+    "model_3_two_step_pretraining",
+    "model_4_reaction_site_assisted",
+    "reaction_site_oracle",
+    "fusion_head",
+    "fusion_tail",
+    "center_predictor"
+  ],
+  "required_inputs": [
+    "data/activated_sludge_pair622_552",
+    "data/external_multistep_571_seeds",
+    "data/external_multistep_gold_strict_442roots_855targets",
+    "data/external_single_step_494"
+  ],
+  "core_entrypoints": [
+    "scripts/reproduce_single_step.py",
+    "scripts/reproduce_multistep.py",
+    "scripts/evaluate_single_step.py",
+    "scripts/evaluate_multistep.py",
+    "scripts/compare_reproduced_metrics.py"
+  ],
+  "optional_provenance_backup": "tp_pretrain_optional_provenance_backup_20261016",
+  "files": [
+    {
+      "path": ".gitignore",
+      "size_bytes": 312,
+      "sha256": "3f46a66ec99b5f7d5128fb89a016a2bfdda1f83820450df2801b654e61427add"
+    },
+    {
+      "path": "baselines/README.md",
+      "size_bytes": 107,
+      "sha256": "e77f2676efeec09736a148db138db9fcecf29580b36d3fd25ab62f601e5ece55"
+    },
+    {
+      "path": "CITATION.cff",
+      "size_bytes": 584,
+      "sha256": "d65110e711ef5af2e151d6b54d946ca17fc72d75f9e73786869d9fb8428b4690"
+    },
+    {
+      "path": "configs/infer_top20.yaml",
+      "size_bytes": 94,
+      "sha256": "dcb55e1d21d5b4227afdf95ba7560bc9bbe9644204f02331e1e42b5d1bc02b7c"
+    },
+    {
+      "path": "configs/README.md",
+      "size_bytes": 504,
+      "sha256": "c539e1700e7ecd225739d0748071938b0715b842281b678509f6df084fcc4e12"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/model4_oof_explicit_predcenter_top5_test.jsonl",
+      "size_bytes": 119779,
+      "sha256": "61ad384d64955156cc00f1030bb0e64a3a736b257704ffab8e64d3db8856ad76"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/oracle_center_test.jsonl",
+      "size_bytes": 87735,
+      "sha256": "e014d9da8e73c5fdfb7599f64812f1706e2d58dcf5a6c22ce414dbaa3d6634cf"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/oracle_center_test_audit.json",
+      "size_bytes": 510,
+      "sha256": "bd35e5184247e3022d7349cd5377d4f8f9575fa2edb2b1fb91984b58ce0eef7b"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/test.jsonl",
+      "size_bytes": 61689,
+      "sha256": "1aee7fe4488eb438a7a7e11eb0d7217d7c8a475d685257cccbda399ddf6ee634"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/train.jsonl",
+      "size_bytes": 183665,
+      "sha256": "5de7bec6937b3006f4ccae2dbaeede0aa78000c5a8d9defcc3e6b15d6073c116"
+    },
+    {
+      "path": "data/activated_sludge_pair622_552/validation.jsonl",
+      "size_bytes": 60488,
+      "sha256": "df9d5d83d881e36460405e4bf15a6d218dcf04b20c3b7d84edca01160c154fe5"
+    },
+    {
+      "path": "data/external_multistep_571_seeds/drug_list_2_multistep_seeds.csv",
+      "size_bytes": 58349,
+      "sha256": "94b58b4453f24cc6cf2f2a87ede51acbb47c7a0d38d0d8eaa9f159770a9d4420"
+    },
+    {
+      "path": "data/external_multistep_571_seeds/README.md",
+      "size_bytes": 391,
+      "sha256": "ac4e008b5033dd6682b2e619b1123c4117dc45edff8b42a273e29fd417362fb5"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/gold_edges.csv",
+      "size_bytes": 2289139,
+      "sha256": "5a48879b63540324262a97d03d85c649522e1794f677c2b2b040c4fb71c057a7"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/gold_paths.jsonl",
+      "size_bytes": 2022042,
+      "sha256": "e508f6f76f3c1f29306fc75df5ed98ffb48d8d9e548cca82031f9a8ef0d5b8b2"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/gold_targets_by_step.csv",
+      "size_bytes": 614533,
+      "sha256": "55234b0e8397b47a3c07e26423d74a64d917b3de7889f1e949f0624137561abb"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/gold_targets_by_step.jsonl",
+      "size_bytes": 797936,
+      "sha256": "f1c473243d1894de646718635ba820048f68e02ee999ecf2d00fc44856404ca3"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/seeds.csv",
+      "size_bytes": 212965,
+      "sha256": "9474fe5ad6f6be14386cbe94f8a7f3eb36aa83b1dcc8de8ea59ea3c16f283202"
+    },
+    {
+      "path": "data/external_multistep_gold_strict_442roots_855targets/summary.json",
+      "size_bytes": 354,
+      "sha256": "722fe5e3853eb1caffe23f161072c37ae94c4bd2dab93d8b54e78dc0eb89de21"
+    },
+    {
+      "path": "data/external_single_step_494/external_reactions.csv",
+      "size_bytes": 105068,
+      "sha256": "7c4b07d3272a5ce80aabf2d31ec492b66896a06d49f6ac7190b605d72a99fc74"
+    },
+    {
+      "path": "data/external_single_step_494/external_reactions.jsonl",
+      "size_bytes": 249754,
+      "sha256": "11a58ca817431c3ef670a14bae87b9f43b8317dd3147ae791e89a2ae121179d3"
+    },
+    {
+      "path": "data/raw/activated_sludge_reactions_raw.xlsx",
+      "size_bytes": 209478,
+      "sha256": "989f21bad9c35b1427a5e0f1b502f1371328d79c5a66db70d3427ab537bc51be"
+    },
+    {
+      "path": "data/raw/environmental_domain_raw.xlsx",
+      "size_bytes": 308088,
+      "sha256": "6a0181a45dbc3cab79f6de7e4a32d6e33cd19210ddd09e681aacfa23f5223bbe"
+    },
+    {
+      "path": "data/raw/reaction_pairs_raw.xlsx",
+      "size_bytes": 115962728,
+      "sha256": "f2d26b6f673a49487d1b317f1315d5c376393e2ff4d6e34006394accc94bee1a"
+    },
+    {
+      "path": "data/raw/README.md",
+      "size_bytes": 932,
+      "sha256": "ec60c268dcaa7db715f5ee4af5d11b2c255ee0c38c6155724a11590c2df8bcd0"
+    },
+    {
+      "path": "data/raw/wastewater_biotransformation_1218_raw.xlsx",
+      "size_bytes": 1491102,
+      "sha256": "0ea482421f3eebf2b22bad9f0681a20ab3571ef26255c3fbfe4b6d15b9b86cd8"
+    },
+    {
+      "path": "data/README.md",
+      "size_bytes": 1056,
+      "sha256": "458f866fccef0bf47dcb16ce77062677c5e828e1e497077d3e10b31f2f209f3c"
+    },
+    {
+      "path": "docs/DATA_AVAILABILITY.md",
+      "size_bytes": 431,
+      "sha256": "6475c5660b46fe9ad2a80f886a6d9344f6557b17894ffd12c96ceb389f469023"
+    },
+    {
+      "path": "docs/EXTERNAL_BASELINES.md",
+      "size_bytes": 369,
+      "sha256": "34ed6f22c2f8f1760cd7c260338ee5475604546eafc7e2fdda977a862d331cb8"
+    },
+    {
+      "path": "docs/MODEL_MAPPING.md",
+      "size_bytes": 1256,
+      "sha256": "f28833623dd0f16d85f783b183a8b36b1105c5733c323f7db5625454ba57b535"
+    },
+    {
+      "path": "docs/REACTION_SITE_PROVENANCE.md",
+      "size_bytes": 2852,
+      "sha256": "274405457af0d26294123bb3d6e6dc090e859e78d4ae1e889b9aa175102d8242"
+    },
+    {
+      "path": "environment.yml",
+      "size_bytes": 217,
+      "sha256": "9b7f459d5d8545c2c8f29e8242b12ed18a1aed6e1fc2487aa93679d0338268cb"
+    },
+    {
+      "path": "examples/README.md",
+      "size_bytes": 801,
+      "sha256": "307dc385d968a97266f51ec3efb3c15bd5244d18207606f173840ad3b1662750"
+    },
+    {
+      "path": "examples/run_multistep_example.sh",
+      "size_bytes": 779,
+      "sha256": "621ffc18d3dd98c13ffb3329b16c917b104c6c4a9de2f36cd8bc4f805e5b1762"
+    },
+    {
+      "path": "examples/run_single_step_example.sh",
+      "size_bytes": 572,
+      "sha256": "7f2e1d0e20365a708726659d551fb81937568ea8e27dfd19d49354d262b62adb"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 10768,
+      "sha256": "8152889eddc2b0349f51ce256997c687448454d555780d90192112a6c3397a8c"
+    },
+    {
+      "path": "models/center_predictor",
+      "size_bytes": 14198533,
+      "sha256": "448c2882087d615bd0a4e211d4cc1918178ec0dff28670fae65781f312490696"
+    },
+    {
+      "path": "models/fusion_head/config.json",
+      "size_bytes": 1551,
+      "sha256": "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
+    },
+    {
+      "path": "models/fusion_head/generation_config.json",
+      "size_bytes": 141,
+      "sha256": "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
+    },
+    {
+      "path": "models/fusion_head/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "4dc5db431fcec7bcdc16a2a06b2df5d7cc900e9ad06df0ed8a04627a5734337f"
+    },
+    {
+      "path": "models/fusion_head/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/fusion_head/tokenizer_config.json",
+      "size_bytes": 3883,
+      "sha256": "c6f4bde40e95735d4c6e33d12cacc7ea049cf9b7401b0d1eb75a41cd527a2e38"
+    },
+    {
+      "path": "models/fusion_tail/config.json",
+      "size_bytes": 1551,
+      "sha256": "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
+    },
+    {
+      "path": "models/fusion_tail/generation_config.json",
+      "size_bytes": 141,
+      "sha256": "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
+    },
+    {
+      "path": "models/fusion_tail/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "e41030fa81f22e13251527a01879f71b817cc66fa1ed2718f6fb0df4ea1447da"
+    },
+    {
+      "path": "models/fusion_tail/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/fusion_tail/tokenizer_config.json",
+      "size_bytes": 301,
+      "sha256": "0f436250f1f99d6babc39960363be2e7437067f00d644c78e83bf0dee373b59c"
+    },
+    {
+      "path": "models/model_1_no_pretraining/config.json",
+      "size_bytes": 1502,
+      "sha256": "9a8c2e26bdc8ac00c0c074b61a8124de2e36c968bb31370efa2e5c4c014a340b"
+    },
+    {
+      "path": "models/model_1_no_pretraining/generation_config.json",
+      "size_bytes": 142,
+      "sha256": "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
+    },
+    {
+      "path": "models/model_1_no_pretraining/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "087fc529f5322152665d76daa4c7dead52db028d3455889af02b9e51a7242001"
+    },
+    {
+      "path": "models/model_1_no_pretraining/special_tokens_map.json",
+      "size_bytes": 2543,
+      "sha256": "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
+    },
+    {
+      "path": "models/model_1_no_pretraining/spiece.model",
+      "size_bytes": 791656,
+      "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+    },
+    {
+      "path": "models/model_1_no_pretraining/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/model_1_no_pretraining/tokenizer_config.json",
+      "size_bytes": 20804,
+      "sha256": "f941a71e49530c706dbd84e4732aa0678634779b24e286da98d32906c0fee00a"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/config.json",
+      "size_bytes": 1530,
+      "sha256": "fbb09fd8d47e4a2981b215c8cf95889a85cd05d4e57603579d4fcced93aaacb8"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/generation_config.json",
+      "size_bytes": 142,
+      "sha256": "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "bf8794834a3c32c397963507f71caae442f699e8936b92e218eebce1e8374645"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/special_tokens_map.json",
+      "size_bytes": 2543,
+      "sha256": "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/spiece.model",
+      "size_bytes": 791656,
+      "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/tokenizer.json",
+      "size_bytes": 2422422,
+      "sha256": "da5b4d02d2ce28081618e607a0cb9fcbc4a69893ab8ac92212430386c8f8e898"
+    },
+    {
+      "path": "models/model_2_single_step_pretraining/tokenizer_config.json",
+      "size_bytes": 20995,
+      "sha256": "2fbd91e99fbe334f972496e372d931da2d1444bc9be8b5b1243ffaa5774e5e55"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/config.json",
+      "size_bytes": 1535,
+      "sha256": "6b1c2e630b77dcdbb242156de0f3e905d358090fe32d9ee1ceeaf1323ae9e5e7"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/generation_config.json",
+      "size_bytes": 142,
+      "sha256": "f1736adb29548dbb11f50e66a60d91b9639dbd24a3ccf9defd5df068f80538ab"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "c290ae1b6c4f80af64a87a253d165086ecb6b7dda900d87b50c1b4f7245a3fc9"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/special_tokens_map.json",
+      "size_bytes": 2543,
+      "sha256": "7a1985a994c41886db38c719d2a3d2f40606663cc19d7c5d6a85d349320e06d2"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/spiece.model",
+      "size_bytes": 791656,
+      "sha256": "d60acb128cf7b7f2536e8f38a5b18a05535c9e14c7a355904270e15b0945ea86"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/model_3_two_step_pretraining/tokenizer_config.json",
+      "size_bytes": 20804,
+      "sha256": "f941a71e49530c706dbd84e4732aa0678634779b24e286da98d32906c0fee00a"
+    },
+    {
+      "path": "models/model_4_reaction_site_assisted/config.json",
+      "size_bytes": 1551,
+      "sha256": "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
+    },
+    {
+      "path": "models/model_4_reaction_site_assisted/generation_config.json",
+      "size_bytes": 141,
+      "sha256": "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
+    },
+    {
+      "path": "models/model_4_reaction_site_assisted/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "4dc5db431fcec7bcdc16a2a06b2df5d7cc900e9ad06df0ed8a04627a5734337f"
+    },
+    {
+      "path": "models/model_4_reaction_site_assisted/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/model_4_reaction_site_assisted/tokenizer_config.json",
+      "size_bytes": 3883,
+      "sha256": "c6f4bde40e95735d4c6e33d12cacc7ea049cf9b7401b0d1eb75a41cd527a2e38"
+    },
+    {
+      "path": "models/reaction_site_oracle/config.json",
+      "size_bytes": 1551,
+      "sha256": "2c1db0773abf25c8a2873800713bf566f1020ea52886c4e3878ba83d6862b293"
+    },
+    {
+      "path": "models/reaction_site_oracle/generation_config.json",
+      "size_bytes": 141,
+      "sha256": "a77850b342b829b33c9cbdfcab1a8b3059f980b0eafac2b50ebd968540c3e987"
+    },
+    {
+      "path": "models/reaction_site_oracle/model.safetensors",
+      "size_bytes": 242041896,
+      "sha256": "b5bb3355b85ff72ff26c244692743b1bb41c19c78b0c7f8b851abc80ef8a3f81"
+    },
+    {
+      "path": "models/reaction_site_oracle/tokenizer.json",
+      "size_bytes": 2422169,
+      "sha256": "71c33c3bf57bf2e19b4f8ac686ad8d182a79f7cd1a4921889437c453420223f1"
+    },
+    {
+      "path": "models/reaction_site_oracle/tokenizer_config.json",
+      "size_bytes": 2394,
+      "sha256": "720af819158ef06b74df81271e37e62461e1bc25a70e73dd523742bc82533377"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 678,
+      "sha256": "e2de154d3864fdc2fa3ca5ce6008a2e532eabdfce62aadba93ec4bec7aa40cc9"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 5034,
+      "sha256": "e6ac35fe2b1ff227850bb11b5163aad97715df48bbdc7bb5c524ec7937e4ab35"
+    },
+    {
+      "path": "requirements-repro.txt",
+      "size_bytes": 225,
+      "sha256": "9c59abed76b2044ebccac77e1af1138aaa5b5cf231f470d1c0e6cdf5d3bfaecc"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/edges.csv",
+      "size_bytes": 14056,
+      "sha256": "c9ef4e7d80a3aace26dade1cbe3be40a83655781aad379010d0a06bd51e4f18b"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/instance_scores.csv",
+      "size_bytes": 49557,
+      "sha256": "8b350b1079329f1e461f564724e496080e783fbf2695e7c6e4718bb0b877e224"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/metrics_by_step.csv",
+      "size_bytes": 648,
+      "sha256": "92de116934b1b892e16d0249b42edfed1bf15c0d1c0a4426f4e33249ed61dafd"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/metrics_summary.json",
+      "size_bytes": 680,
+      "sha256": "358ac3fe5fd423a7e4d69daadc224a7b7caa32f3a52dbb88db8197b3b66c276b"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/missing_prediction_keys.csv",
+      "size_bytes": 4281,
+      "sha256": "c9018927cb9a4f6c82075cdcd212fb8550fd94b521c8a200c74e1a8a3bcedd1f"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_vs_gold/normalized_predictions.jsonl",
+      "size_bytes": 10675,
+      "sha256": "0e25315785fdb04834a4149ae9a17410f880782b7cab582984d02987a1485e14"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/intermediate_matches.csv",
+      "size_bytes": 1,
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/metrics_by_context.csv",
+      "size_bytes": 5378,
+      "sha256": "ab919743435e62b69774b93e9be21722c28e9d34e9231b6e5ea4c56048b3f5b0"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/metrics_summary.json",
+      "size_bytes": 733,
+      "sha256": "aa499480c8035f82c824ca563e4aec63513b57f66ed98e0ce858d571725139cb"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/normalized_pred_paths.csv",
+      "size_bytes": 13288,
+      "sha256": "45dd9aa0e4ff18b584a7bb0eb12e8f9a4783b757aa16b93153eb955ca65d5032"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/stepwise_metrics_by_step.csv",
+      "size_bytes": 389,
+      "sha256": "d07438dc1cc08415f365d276d0f1274198c5e4d5fce2a3b6cb025a7b6a4992e1"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/stepwise_metrics_from_targets.json",
+      "size_bytes": 2217,
+      "sha256": "483f47df5f8f6ab89dfd7427fafffb10082712dd91ec66b7cc56b1e0c8f30a40"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/eval_weighted_mg/weighted_pr_curve.csv",
+      "size_bytes": 237,
+      "sha256": "8529155593f7e165dc634d67d416459e140d1d2ca4903175c4cbded7ca98f541"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/nodes.csv",
+      "size_bytes": 25259,
+      "sha256": "50b9aeadf8c9ed9a3ad828ad622864414e70330a49bfe588f555233f5befd283"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/paths_topk.csv",
+      "size_bytes": 23138,
+      "sha256": "1ced936f716bbbc3224dfe99769432cfb827a36875cccf25b05c4f1e8fba00f0"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/paths_topk_for_mg.csv",
+      "size_bytes": 14255,
+      "sha256": "97d9d5873fa920aae1b37827be8d6735a49f7296e4765a81f370f6113bf2c0b5"
+    },
+    {
+      "path": "results/baselines/envirule_pairsheet_10seed/summary.json",
+      "size_bytes": 955,
+      "sha256": "3a5f2a829215047ef19376c0a5196e0111aab386a5a3b2df6f8d91d4278abe5a"
+    },
+    {
+      "path": "results/figure_5_attention/attention_heatmap_clean_QA_summary.csv",
+      "size_bytes": 729,
+      "sha256": "05d278335b935d36ff3183b3eb6ecfd6f6f902ca0f49a118783d26790b1d7636"
+    },
+    {
+      "path": "results/figure_5_attention/attention_heatmap_clean_source_data.csv",
+      "size_bytes": 3462908,
+      "sha256": "074881cec2e84fd1776dd922edd2282600b55ad5346404323f419f294ed2f312"
+    },
+    {
+      "path": "results/figure_5_attention/attention_mean_clean.csv",
+      "size_bytes": 2316437,
+      "sha256": "820e74ce1113b32f87d555d79bfcb2e78f2c7adcf7192fe0b332ec4faa58d162"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/all_complete_paths.csv",
+      "size_bytes": 10180650,
+      "sha256": "b846af86818c0fd9a3fea82efb70ff2bcb6b49c31a172bc9ef4649093157c9d3"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/all_depth3_paths.csv",
+      "size_bytes": 10168898,
+      "sha256": "63b6a105139c0f2b3f8e956d01bbebc5bf6e77bb84b9b99c9517e45297c42812"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/best_depth3_path_per_drug.csv",
+      "size_bytes": 509226,
+      "sha256": "4ff69adedc5f54e9912b8a32ff8b9a89f0c6c446ed201b9c4b1567618545bf54"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/config.json",
+      "size_bytes": 1013,
+      "sha256": "e3c608ae99abb1881af0e264e9ab617fdf1d056471afb0eb5e63bbca55593178"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/drug_multistep_summary.csv",
+      "size_bytes": 30375,
+      "sha256": "40e6839ee7445869b7949d24a984643fb7ec187175b718beb2e76b4865132459"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/edges.csv",
+      "size_bytes": 5552256,
+      "sha256": "7e684bea22f38abd344428ae3564f13e4772f1b31370d954029505ec93e52d29"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/nodes.csv",
+      "size_bytes": 6860564,
+      "sha256": "589b1e1d8f485b5df0e4b40cf2be815deac5e8868939680eb87d8e006dc49e9e"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/paths_topk.csv",
+      "size_bytes": 147228,
+      "sha256": "8bfee2174b052aaa72933b937be397e87a83472f23ad570889f5ae191f88839d"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/seeds.csv",
+      "size_bytes": 58349,
+      "sha256": "94b58b4453f24cc6cf2f2a87ede51acbb47c7a0d38d0d8eaa9f159770a9d4420"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/summary.json",
+      "size_bytes": 956,
+      "sha256": "6a97769042ab5a4d58f731629aa073f946611e26987ab1b96ef320093d821256"
+    },
+    {
+      "path": "results/fusion_multistep_571_depth3_top10_expandtop3/top10_depth3_paths_per_drug.csv",
+      "size_bytes": 5092288,
+      "sha256": "7cff9c3a1f2b02dd6d07fe774a1c2af6c272586d46ab8ce5de7e1865d529c11a"
+    },
+    {
+      "path": "results/reference_metrics/README.md",
+      "size_bytes": 742,
+      "sha256": "ff4edf5bbb9630c64b0e093ddb5ed15f3975e7dd4a51837da93c0a9588b37a4c"
+    },
+    {
+      "path": "results/reference_metrics/topk_prediction_results_different_models.xlsx",
+      "size_bytes": 132188,
+      "sha256": "afe6dee5032ea7165973d9018be692bf304493f7c55bd621187f1cb2420d31b1"
+    },
+    {
+      "path": "scripts/build_oracle_center_test.py",
+      "size_bytes": 3536,
+      "sha256": "2e237b915a61f7d7dcf8a8233232c804d73b83e470eb61478e03a17d89474dd9"
+    },
+    {
+      "path": "scripts/compare_reproduced_metrics.py",
+      "size_bytes": 3468,
+      "sha256": "59c865d2a582abe64886d15582550d31618f9961c5e2734741fe17c1388d43ad"
+    },
+    {
+      "path": "scripts/evaluate_multistep.py",
+      "size_bytes": 7492,
+      "sha256": "6717c9b075386952e936797264c03c31e341fac72912ad201b8865812b550d26"
+    },
+    {
+      "path": "scripts/evaluate_single_step.py",
+      "size_bytes": 4987,
+      "sha256": "3333382435e7911593e8b83ad0e1ce413e99039872ee987bb9938439cfd2b8e2"
+    },
+    {
+      "path": "scripts/fuse_head_tail_predictions.py",
+      "size_bytes": 4098,
+      "sha256": "f9c675079e30e24730e7f4eb52521919bf29e783ef890dfaf9d8b5eb6b49aeb5"
+    },
+    {
+      "path": "scripts/predict_baseline_multi_smiles.py",
+      "size_bytes": 19151,
+      "sha256": "fe6a763714d83b8d63b9c7e4646b4b239c3885cd8f50d691c430cbb9a46d7fe9"
+    },
+    {
+      "path": "scripts/predict_fusion_oofhead_newmergedc3tail.py",
+      "size_bytes": 10218,
+      "sha256": "6fa64d9a5f3ef78d8febee4075b4aa7238ff0ca0a415267e6f7cc4b466d11f35"
+    },
+    {
+      "path": "scripts/reproduce_multistep.py",
+      "size_bytes": 21150,
+      "sha256": "953704599a034126ce27b8c50955c6f914189a251858bae1f977f38310a6633f"
+    },
+    {
+      "path": "scripts/reproduce_single_step.py",
+      "size_bytes": 6315,
+      "sha256": "507b09d70d34bc4d8d618d3d12bca93e58174b3affa9b8ab43021e75f9760370"
+    },
+    {
+      "path": "scripts/train_predict_som_center_oof_explicit.py",
+      "size_bytes": 14209,
+      "sha256": "fcb916a4a780027b1c69697d660d7c039990174c28e757fd931494eee7c51438"
+    },
+    {
+      "path": "src/github_release_tools_20261013.zip",
+      "size_bytes": 12016,
+      "sha256": "a590f71903e597e2af5a902cdb70b3d88b1f840b7b40ece6e00ce585ba6c0fee"
+    },
+    {
+      "path": "src/tp_pretrain/__init__.py",
+      "size_bytes": 185,
+      "sha256": "a659c7db024e91f2fdcfb742099b4132105fffdb3f5a58bc4fc61d5ea11df36c"
+    },
+    {
+      "path": "src/tp_pretrain/data/__init__.py",
+      "size_bytes": 175,
+      "sha256": "43d0cdaaf390ad4ee96a4e58e8d29311daa644d8b3ff26d641e348880fac4931"
+    },
+    {
+      "path": "src/tp_pretrain/data/collator.py",
+      "size_bytes": 4109,
+      "sha256": "97774d2ce40a3ae7afd8c5ff35e8b11de2edcfc589cd076e6d69ea87d0fb1f3b"
+    },
+    {
+      "path": "src/tp_pretrain/data/dataset.py",
+      "size_bytes": 1482,
+      "sha256": "06f07dc15589b0736d9a3228a0e0b229bf37954580f091afc103d8a4c8600d6b"
+    },
+    {
+      "path": "src/tp_pretrain/data/preprocess.py",
+      "size_bytes": 13067,
+      "sha256": "d951f0b3b7d39eafa0f79bce94aaaeabdcdd0abe456d33ae96131b50a3da26bc"
+    },
+    {
+      "path": "src/tp_pretrain/data/schema.py",
+      "size_bytes": 3730,
+      "sha256": "2db1f97d93171ab19f2fd214d77c675aa837c28d1732d2360ab7c59a0e46b16f"
+    },
+    {
+      "path": "src/tp_pretrain/evaluation/__init__.py",
+      "size_bytes": 173,
+      "sha256": "5db0fde1624156ea20bd165a67efc3311b00340e1de1a18b4599db6fbd45cc31"
+    },
+    {
+      "path": "src/tp_pretrain/evaluation/evaluator.py",
+      "size_bytes": 8279,
+      "sha256": "f7e21c633b7d4cafab196bf468123315d3ef48aa7c241e9dcb8a7d58a1f24b28"
+    },
+    {
+      "path": "src/tp_pretrain/inference/__init__.py",
+      "size_bytes": 379,
+      "sha256": "aa9c5866dfbdf8ccafe5ffc8abdf47240a2a65cd045efd37e4da96823b1fff11"
+    },
+    {
+      "path": "src/tp_pretrain/inference/path.py",
+      "size_bytes": 6816,
+      "sha256": "63dbf9a3045adb20e8448f490f3583d060902eec6f7692aa2501a0aad6839854"
+    },
+    {
+      "path": "src/tp_pretrain/inference/predictor.py",
+      "size_bytes": 5825,
+      "sha256": "decd7e96a12a22b40da7953d7a74284ca60baa51da6c9d9e3aabcc498c1cb10c"
+    },
+    {
+      "path": "src/tp_pretrain/inference/rerank.py",
+      "size_bytes": 4267,
+      "sha256": "0c98b3d628f195f58ac58050ba9a60402d9107515b50f2965f5a76bbc4562639"
+    },
+    {
+      "path": "src/tp_pretrain/models/__init__.py",
+      "size_bytes": 472,
+      "sha256": "2e8129049337335a533c90c7a8f802dcc1df52dcc3fc60969d3f50936c3d2867"
+    },
+    {
+      "path": "src/tp_pretrain/models/som_head.py",
+      "size_bytes": 1620,
+      "sha256": "81b17082f0c0bee5f2ba99f6c77f8043fe38d214b537592ad05619b59046c970"
+    },
+    {
+      "path": "src/tp_pretrain/models/stop_head.py",
+      "size_bytes": 1421,
+      "sha256": "b65d50ff368c8d970c2889c2715e30fa04b52c74eda481c3a10cb474eeaaf5c2"
+    },
+    {
+      "path": "src/tp_pretrain/models/tokenizer.py",
+      "size_bytes": 1832,
+      "sha256": "5ada7be196ecc4bc0e983784067699547b3822ee11df154d646f149f39a85d0b"
+    },
+    {
+      "path": "src/tp_pretrain/retrieval/__init__.py",
+      "size_bytes": 515,
+      "sha256": "bf8ecc4c6be8f0cb8080554ec2af50e654bf9129f61e0304e183e3c260eb2b1a"
+    },
+    {
+      "path": "src/tp_pretrain/retrieval/index.py",
+      "size_bytes": 4637,
+      "sha256": "5078901e18a9f4e78b4f357a48243d384e4757cf07f6b737addfedf7bf1fc45f"
+    },
+    {
+      "path": "src/tp_pretrain/retrieval/retriever.py",
+      "size_bytes": 2038,
+      "sha256": "51c419f4b216f91d9bea9a747718840b5317a18998cffa27d8151f7ca6280825"
+    },
+    {
+      "path": "src/tp_pretrain/retrieval/schema.py",
+      "size_bytes": 1274,
+      "sha256": "ceb6bfaeb05f45295da224eb3437032d47641e1a9e5ce7d86a9cf366ad090d0a"
+    },
+    {
+      "path": "src/tp_pretrain/retrieval/scorer.py",
+      "size_bytes": 1018,
+      "sha256": "e4bab447b3ec7a0767d369feba217b4df0743cd39396e8a25fb1a93a4c815a92"
+    },
+    {
+      "path": "src/tp_pretrain/training/__init__.py",
+      "size_bytes": 278,
+      "sha256": "b3c7e246cb79517e1aaafaa51a5f72ce207cb32b5ae15b3d53aadf6352b9f52c"
+    },
+    {
+      "path": "src/tp_pretrain/training/losses.py",
+      "size_bytes": 923,
+      "sha256": "2da2cd250fb2b520317a4fe9d681b6ed63b3d16706b5a798d19dde9efb25b8dc"
+    },
+    {
+      "path": "src/tp_pretrain/training/trainer.py",
+      "size_bytes": 6989,
+      "sha256": "acbe5fdd6f2e8d9d148db13e25797d8eb9c44a9790b5a889ed4ff48628f9d12d"
+    },
+    {
+      "path": "src/tp_pretrain/utils/__init__.py",
+      "size_bytes": 303,
+      "sha256": "5fe4598e75a99a265165e982f7adc64eff27d74c33d83200c30bb443045f8be8"
+    },
+    {
+      "path": "src/tp_pretrain/utils/chemistry.py",
+      "size_bytes": 3059,
+      "sha256": "c528578de9c44fa37a38b8bfe8c3f1b90e849abf9c9955a4726d3c0fd5f7223f"
+    },
+    {
+      "path": "src/tp_pretrain/utils/io.py",
+      "size_bytes": 1878,
+      "sha256": "b628c42da771625705e5400f9df47a1e37653f1c1ca7f16634ae15abf2f848dc"
+    },
+    {
+      "path": "src/tp_pretrain/utils/logging_utils.py",
+      "size_bytes": 1218,
+      "sha256": "8d9ea31bf59f586c2793d6b789b716995bfd746e65a9964db2c2de6c6c6475b9"
+    },
+    {
+      "path": "src/tp_pretrain/utils/seed.py",
+      "size_bytes": 786,
+      "sha256": "5330a45023e2f7c33c994a14ef544c7e80f709a0aa7cb57120ce8afd0d0cf54e"
+    },
+    {
+      "path": "tests/README.md",
+      "size_bytes": 130,
+      "sha256": "756a7eee3f96adf81c56171cba63e519ef18768ce34cdec0bdd77e8b83ca192c"
+    }
+  ],
+  "raw_source_data": [
+    "data/raw/reaction_pairs_raw.xlsx",
+    "data/raw/environmental_domain_raw.xlsx",
+    "data/raw/activated_sludge_reactions_raw.xlsx",
+    "data/raw/wastewater_biotransformation_1218_raw.xlsx"
+  ],
+  "excluded_provenance": [
+    "large canonical audit tables",
+    "source manifests",
+    "debug-only pairsheet gold inputs",
+    "derived 1218_safe.xlsx copy"
+  ]
 }
