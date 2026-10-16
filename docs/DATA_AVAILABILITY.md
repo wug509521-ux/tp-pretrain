@@ -1,3 +1,3 @@
-# Data availability checklist
+# Data availability scope
 
-Before public release, classify every dataset as public, reused public, third-party restricted, controlled access or not releasable. Do not claim that restricted data are public. Record the source, license, stable identifier, checksum and the exact files needed to reproduce each manuscript table and figure.
+The core repository contains the fixed inputs required to reproduce the reported checkpoint-based inference and evaluation. Raw source workbooks and large canonical audit tables are maintained separately because they are not needed by the reproduction entrypoints and may have independent redistribution conditions. The optional local provenance backup records the files removed from the compact package.

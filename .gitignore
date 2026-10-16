@@ -11,3 +11,12 @@ cache/
 models/**/model.safetensors
 data/raw_sources/**/*.xlsx
 data/normalized_canonical_20261013/reaction_pairs_sheet1_rdkit_canonical.csv
+
+src/tp_pretrain_project.egg-info/
+data/manifests/
+data/*1218*.xlsx
+
+data/raw/
+data/raw/**/*.xlsx
+
+

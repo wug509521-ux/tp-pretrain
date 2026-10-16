@@ -1,10 +1,5 @@
-# Configuration files
+# Reproduction configuration
 
-The public reproduction entry points use the following minimal configuration set:
+The unified reproduction scripts use `infer_top20.yaml` for the shared beam-search settings. Model and input paths are supplied by the scripts so that the package can be moved between machines without editing server-specific paths.
 
-- `data.yaml`: base data settings;
-- `model.yaml`: T5 model settings;
-- `infer.yaml`: general inference defaults;
-- `infer_top20.yaml`: the released Top-k inference configuration.
-
-Historical training and exploratory configurations are kept outside the public package because the release reproduces the published checkpoints rather than retraining every historical experiment. The released training code is retained under `src/` for provenance, while the reproducibility commands use the checkpoint files under `models/`.
+Training-era YAML files and historical fixed-test variants were intentionally omitted from the core release. The published package is checkpoint-based: it reproduces the reported inference and evaluation results without requiring retraining.
